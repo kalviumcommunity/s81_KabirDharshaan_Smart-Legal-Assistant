@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const zeroShotRoutes = require("./routes/zeroShotRoutes");
 const oneShotRoutes=require("./routes/oneShotRoutes")
 const multiShotRoutes=require("./routes/multiShotRoutes")
+const functionCallingRoutes=require("./routes/functionCallingRoutes")
+
 const app = express();
 app.use(bodyParser.json());
 
@@ -10,6 +12,7 @@ app.use(bodyParser.json());
 app.use("./routes/zeroShotRoutes.js", zeroShotRoutes);
 app.use("./routes/oneShotRoutes.js",oneShotRoutes);
 app.use("./routes/multiShotRoutes.js",multiShotRoutes);
+app.use("./routes/functionCallingRoutes.js",functionCallingRoutes);
 
 const PORT = 5000;
 app.listen(PORT, () => {
