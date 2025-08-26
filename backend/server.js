@@ -8,6 +8,7 @@ const multiShotRoutes = require("./routes/multiShotRoutes");
 const functionCallingRoutes = require("./routes/functionCallingRoutes");
 const chainOfThoughtRoutes = require("./routes/chainOfThoughtRoutes");
 const tokenRoutes = require("./routes/tokenRoutes");
+const dynamic=require("./routes/dynamicPromptRoutes")
 
 const app = express();
 app.use(bodyParser.json());
@@ -19,6 +20,7 @@ app.use("/api/multi-shot", multiShotRoutes);
 app.use("/api/function-calling", functionCallingRoutes);
 app.use("/api/chain-of-thought", chainOfThoughtRoutes);
 app.use("/api/tokens", tokenRoutes);
+app.use("/api/dynamic", dynamic);
 
 const PORT = 5000;
 app.listen(PORT, () => {
