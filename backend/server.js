@@ -1,20 +1,26 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+require("dotenv").config();
+
 const zeroShotRoutes = require("./routes/zeroShotRoutes");
-const oneShotRoutes=require("./routes/oneShotRoutes")
-const multiShotRoutes=require("./routes/multiShotRoutes")
-const functionCallingRoutes=require("./routes/functionCallingRoutes")
-const chainOfThoughtRoutes=require('./routes/chainOfThoughtRoutes.js')
+const oneShotRoutes = require("./routes/oneShotRoutes");
+const multiShotRoutes = require("./routes/multiShotRoutes");
+const functionCallingRoutes = require("./routes/functionCallingRoutes");
+const chainOfThoughtRoutes = require("./routes/chainOfThoughtRoutes");
+const tokenRoutes = require("./routes/tokenRoutes");
+
 const app = express();
 app.use(bodyParser.json());
 
-// routes
-app.use("./routes/zeroShotRoutes.js", zeroShotRoutes);
-app.use("./routes/oneShotRoutes.js",oneShotRoutes);
-app.use("./routes/multiShotRoutes.js",multiShotRoutes);
-app.use("./routes/functionCallingRoutes.js",functionCallingRoutes);
-app.use("/api/chainofthought", chainOfThoughtRoutes);
+// ✅ Correct route mounting (use a URL prefix)
+app.use("/api/zero-shot", zeroShotRoutes);
+app.use("/api/one-shot", oneShotRoutes);
+app.use("/api/multi-shot", multiShotRoutes);
+app.use("/api/function-calling", functionCallingRoutes);
+app.use("/api/chain-of-thought", chainOfThoughtRoutes);
+app.use("/api/tokens", tokenRoutes);
+
 const PORT = 5000;
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
